@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sault Ste. Marie Property Tax Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/@cityssm/bulma-a11y@0.4.0/bulma-a11y.min.css" rel="stylesheet" />
+    <style>
+      .input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      .input[type="number"]::-webkit-inner-spin-button,
+      .input[type="number"]::-webkit-outer-spin-button {
+        margin: 0;
+        -webkit-appearance: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container" style="max-width:700px">
+      <h1 class="title has-text-centered is-3">Sault Ste. Marie Property Tax Calculator</h1>
+
+      <div class="box">
+        <div class="columns">
+          <div class="column">
+            <div class="field">
+              <label class="label" for="filter--budgetYear">Budget Year</label>
+              <div class="select is-fullwidth">
+                <select id="filter--budgetYear" name="budgetYear"></select>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label" for="filter--area">Area</label>
+              <div class="select is-fullwidth">
+                <select id="filter--area" name="area"></select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label" for="filter--propertyClass">Property Class</label>
+          <div class="select is-fullwidth">
+            <select id="filter--propertyClass" name="propertyClass"></select>
+          </div>
+        </div>
+        <label class="label" for="filter--assessmentValue">Assessment Value</label>
+        <div class="field has-addons">
+          <div class="control">
+            <span class="button is-static">$</span>
+          </div>
+          <div class="control is-expanded">
+            <input class="input" id="filter--assessmentValue" type="number" value="200000" min="0" max="100000000" step="1" required onwheel="return false" />
+          </div>
+        </div>
+      </div>
+
+      <div id="resultsContainer"></div>
+    </main>
+    <script>
+      window.exports = window.exports ?? {}
+    </script>
+    <script src="data.2023.js"></script>
+    <script src="calculator.js"></script>
+  </body>
+</html>
