@@ -73,14 +73,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
         let taxAmount;
         for (const [budgetArea, percentage] of Object.entries(taxPercentages.budgetAreas)) {
             rowElement = document.createElement('tr');
-            taxAmount = Math.floor(taxesOwed * percentage);
+            taxAmount = Math.round(taxesOwed * percentage);
             taxesRemaining -= taxAmount;
             rowElement.innerHTML = `<td>${budgetArea}</td>
         <td class="has-text-right">$${taxAmount}</td>
         <td class="has-text-right">${(percentage * 100).toFixed(2)}%</td>`;
             resultsContainerElement.querySelector('tbody').append(rowElement);
         }
-        if (taxesRemaining > 0) {
+        if (taxesRemaining !== 0) {
             rowElement.querySelectorAll('td').item(1).innerHTML = `$${taxAmount + taxesRemaining}`;
         }
     }

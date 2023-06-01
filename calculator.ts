@@ -125,7 +125,7 @@ import type { AreaTaxPercentages, TaxData, TaxPercentages } from './dataTypes'
     for (const [budgetArea, percentage] of Object.entries(taxPercentages.budgetAreas)) {
       rowElement = document.createElement('tr')
 
-      taxAmount = Math.floor(taxesOwed * percentage)
+      taxAmount = Math.round(taxesOwed * percentage)
       taxesRemaining -= taxAmount
 
       rowElement.innerHTML = `<td>${budgetArea}</td>
@@ -135,7 +135,7 @@ import type { AreaTaxPercentages, TaxData, TaxPercentages } from './dataTypes'
       resultsContainerElement.querySelector('tbody').append(rowElement)
     }
 
-    if (taxesRemaining > 0) {
+    if (taxesRemaining !== 0) {
       rowElement.querySelectorAll('td').item(1).innerHTML = `$${taxAmount + taxesRemaining}`
     }
   }
