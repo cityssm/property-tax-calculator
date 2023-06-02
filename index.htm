@@ -6,8 +6,22 @@
 
     <title>Sault Ste. Marie Property Tax Calculator</title>
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://cdn.jsdelivr.net/npm/@cityssm/bulma-a11y@0.4.0/bulma-a11y.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;800&display=swap" rel="stylesheet" />
     <style>
+      *,
+      input,
+      select {
+        font-family: 'Barlow', sans-serif;
+      }
+
+      td {
+        font-variant-numeric: tabular-nums;
+      }
+
       .input[type="number"] {
         -moz-appearance: textfield;
       }
@@ -19,7 +33,7 @@
       }
     </style>
   </head>
-  <body>
+  <body class="m-2">
     <main class="container" style="max-width:700px">
       <h1 class="title has-text-centered is-3">Sault Ste. Marie Property Tax Calculator</h1>
 
@@ -48,7 +62,7 @@
             <select id="filter--propertyClass" name="propertyClass"></select>
           </div>
         </div>
-        <label class="label" for="filter--assessmentValue">Assessment Value</label>
+        <label class="label mt-5" for="filter--assessmentValue">Assessment Value</label>
         <div class="field has-addons">
           <div class="control">
             <span class="button is-static">$</span>
