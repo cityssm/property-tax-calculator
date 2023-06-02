@@ -1,7 +1,7 @@
 {
   "name": "@cityssm/property-tax-calculator",
   "version": "1.0.0",
-  "description": "",
+  "description": "An embeddable tool for citizens to see how their property taxes are distributed.",
   "main": "index.htm",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
