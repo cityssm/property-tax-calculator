@@ -38,39 +38,50 @@
       <h1 class="title has-text-centered is-3">Sault Ste. Marie Property Tax Calculator</h1>
 
       <div class="box">
-        <div class="columns">
-          <div class="column">
-            <div class="field">
-              <label class="label" for="filter--budgetYear">Budget Year</label>
-              <div class="select is-fullwidth">
-                <select id="filter--budgetYear" name="budgetYear"></select>
+        <form>
+          <div class="columns">
+            <div class="column">
+              <div class="field">
+                <label class="label" for="filter--budgetYear">Budget Year</label>
+                <div class="select is-fullwidth">
+                  <select id="filter--budgetYear" name="budgetYear"></select>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="field">
+                <label class="label" for="filter--area">Area</label>
+                <div class="select is-fullwidth">
+                  <select id="filter--area" name="area"></select>
+                </div>
               </div>
             </div>
           </div>
-          <div class="column">
-            <div class="field">
-              <label class="label" for="filter--area">Area</label>
-              <div class="select is-fullwidth">
-                <select id="filter--area" name="area"></select>
-              </div>
+          <div class="field">
+            <label class="label" for="filter--propertyClass">Property Class</label>
+            <div class="select is-fullwidth">
+              <select id="filter--propertyClass" name="propertyClass"></select>
             </div>
           </div>
-        </div>
-        <div class="field">
-          <label class="label" for="filter--propertyClass">Property Class</label>
-          <div class="select is-fullwidth">
-            <select id="filter--propertyClass" name="propertyClass"></select>
+          <div class="columns is-mobile is-align-items-end">
+            <div class="column">
+              <label class="label" for="filter--assessmentValue">Assessment Value</label>
+              <div class="field has-addons">
+                <div class="control">
+                  <span class="button is-static">$</span>
+                </div>
+                <div class="control is-expanded">
+                  <input class="input" id="filter--assessmentValue" type="number" value="200000" min="0" max="100000000" step="1" required onwheel="return false" />
+                </div>
+              </div>
+            </div>
+            <div class="column is-narrow">
+              <button class="button is-info" type="submit">
+                Refresh
+              </button>
+            </div>
           </div>
-        </div>
-        <label class="label mt-5" for="filter--assessmentValue">Assessment Value</label>
-        <div class="field has-addons">
-          <div class="control">
-            <span class="button is-static">$</span>
-          </div>
-          <div class="control is-expanded">
-            <input class="input" id="filter--assessmentValue" type="number" value="200000" min="0" max="100000000" step="1" required onwheel="return false" />
-          </div>
-        </div>
+        </form>
       </div>
 
       <div id="resultsContainer"></div>

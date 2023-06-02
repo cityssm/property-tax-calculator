@@ -84,5 +84,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
             rowElement.querySelectorAll('td').item(1).innerHTML = `$${taxAmount + taxesRemaining}`;
         }
     }
+    document.querySelector('form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        renderAreas();
+    });
     renderAreas();
 })();

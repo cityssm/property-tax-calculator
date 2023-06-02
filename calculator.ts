@@ -144,5 +144,10 @@ import type { AreaTaxPercentages, TaxData, TaxPercentages } from './dataTypes'
    * Initialize
    */
 
+  document.querySelector('form').addEventListener('submit', (event) => {
+    event.preventDefault()
+    renderAreas()
+  })
+
   renderAreas()
 })()
