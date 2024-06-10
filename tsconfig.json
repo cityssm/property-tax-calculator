@@ -16,5 +16,5 @@
   },
   "compileOnSave": true,
   "buildOnSave": true,
-  "exclude": ["javascript/*"]
+  "exclude": ["javascripts/*"]
 }
