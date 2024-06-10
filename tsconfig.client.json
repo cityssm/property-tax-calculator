@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "isolatedModules": false,
+    "declaration": true,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "allowUnreachableCode": false
+  },
+  "include": ["javascript/*"],
+  "compileOnSave": true,
+  "buildOnSave": true
+}

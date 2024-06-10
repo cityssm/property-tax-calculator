@@ -70,7 +70,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
         </tfoot>
       </table>`;
         let rowElement;
-        let taxAmount;
+        let taxAmount = 0;
         for (const [budgetArea, percentage] of Object.entries(taxPercentages.budgetAreas)) {
             rowElement = document.createElement('tr');
             taxAmount = Math.round(taxesOwed * percentage);
@@ -78,13 +78,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
             rowElement.innerHTML = `<td>${budgetArea}</td>
         <td class="has-text-right">$${taxAmount}</td>
         <td class="has-text-right">${(percentage * 100).toFixed(2)}%</td>`;
-            resultsContainerElement.querySelector('tbody').append(rowElement);
+            resultsContainerElement.querySelector('tbody')?.append(rowElement);
         }
-        if (taxesRemaining !== 0) {
+        if (taxesRemaining !== 0 && rowElement !== undefined) {
             rowElement.querySelectorAll('td').item(1).innerHTML = `$${taxAmount + taxesRemaining}`;
         }
     }
-    document.querySelector('form').addEventListener('submit', (event) => {
+    document.querySelector('form')?.addEventListener('submit', (event) => {
         event.preventDefault();
         renderAreas();
     });

@@ -1,4 +1,4 @@
-import type { AreaTaxPercentages, TaxData, TaxPercentages } from './dataTypes'
+import type { AreaTaxPercentages, TaxData, TaxPercentages } from '../dataTypes.js'
 ;(() => {
   const taxData = (window as any).exports.taxData as TaxData
 
@@ -119,8 +119,8 @@ import type { AreaTaxPercentages, TaxData, TaxPercentages } from './dataTypes'
         </tfoot>
       </table>`
 
-    let rowElement: HTMLTableRowElement
-    let taxAmount: number
+    let rowElement: HTMLTableRowElement | undefined
+    let taxAmount = 0
 
     for (const [budgetArea, percentage] of Object.entries(taxPercentages.budgetAreas)) {
       rowElement = document.createElement('tr')
@@ -132,10 +132,10 @@ import type { AreaTaxPercentages, TaxData, TaxPercentages } from './dataTypes'
         <td class="has-text-right">$${taxAmount}</td>
         <td class="has-text-right">${(percentage * 100).toFixed(2)}%</td>`
 
-      resultsContainerElement.querySelector('tbody').append(rowElement)
+      resultsContainerElement.querySelector('tbody')?.append(rowElement)
     }
 
-    if (taxesRemaining !== 0) {
+    if (taxesRemaining !== 0 && rowElement !== undefined) {
       rowElement.querySelectorAll('td').item(1).innerHTML = `$${taxAmount + taxesRemaining}`
     }
   }
@@ -144,7 +144,7 @@ import type { AreaTaxPercentages, TaxData, TaxPercentages } from './dataTypes'
    * Initialize
    */
 
-  document.querySelector('form').addEventListener('submit', (event) => {
+  document.querySelector('form')?.addEventListener('submit', (event) => {
     event.preventDefault()
     renderAreas()
   })

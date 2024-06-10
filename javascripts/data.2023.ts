@@ -1,4 +1,4 @@
-import type { TaxData } from './dataTypes'
+import type { TaxData } from '../dataTypes'
 ;(() => {
   const taxData: TaxData = {
     taxYear: 2023,
