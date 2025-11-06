@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "eslint-config-cityssm": "^33.2.1",
+    "eslint-config-cityssm": "^34.0.0",
     "prettier-config-cityssm": "^1.0.0"
   }
 }
