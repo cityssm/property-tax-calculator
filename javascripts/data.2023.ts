@@ -1,4 +1,7 @@
-import type { TaxData } from '../dataTypes'
+// eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
+/* eslint-disable perfectionist/sort-objects */
+
+import type { TaxData } from '../dataTypes.js'
 ;(() => {
   const taxData: TaxData = {
     taxYear: 2023,
@@ -50,5 +53,6 @@ import type { TaxData } from '../dataTypes'
     }
   }
 
-  ;(window as any).exports.taxData = taxData
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ;(globalThis as any).exports.taxData = taxData
 })()

@@ -1,13 +1,18 @@
+// eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
+/* eslint-disable perfectionist/sort-union-types */
+
 export interface TaxData {
   taxYear: number
+  
   percentages: Record<Area, AreaTaxPercentages>
 }
 
-export type AreaTaxPercentages = { [propertyClass in PropertyClass]?: TaxPercentages }
+export type AreaTaxPercentages = Partial<Record<PropertyClass, TaxPercentages>>
 
 export interface TaxPercentages {
   taxRate: number
-  budgetAreas: { [budgetArea in BudgetArea]?: number }
+  
+  budgetAreas: Partial<Record<BudgetArea, number>>
 }
 
 type Area = 'Urban' | 'Rural'

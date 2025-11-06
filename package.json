@@ -1,16 +1,17 @@
 {
   "name": "@cityssm/property-tax-calculator",
   "version": "1.0.0",
+  "private": true,
   "description": "An embeddable tool for citizens to see how their property taxes are distributed.",
+  "license": "UNLICENSED",
+  "author": "The Corporation of the City of Sault Ste. Marie",
+  "type": "module",
   "main": "index.htm",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "The Corporation of the City of Sault Ste. Marie",
-  "license": "UNLICENSE",
-  "private": true,
   "devDependencies": {
-    "eslint-config-cityssm": "^4.0.0",
+    "eslint-config-cityssm": "^33.2.1",
     "prettier-config-cityssm": "^1.0.0"
   }
 }

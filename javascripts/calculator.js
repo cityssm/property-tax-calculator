@@ -1,10 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 (() => {
-    const taxData = window.exports.taxData;
+    const taxData = globalThis.exports.taxData;
     const budgetYearSelectElement = document.querySelector('#filter--budgetYear');
     budgetYearSelectElement.addEventListener('change', renderAreas);
-    budgetYearSelectElement.innerHTML = `<option value="${taxData.taxYear}">${taxData.taxYear}</option>`;
+    budgetYearSelectElement.innerHTML = `
+    <option value="${taxData.taxYear}">
+      ${taxData.taxYear}
+    </option>
+  `;
     const areaSelectElement = document.querySelector('#filter--area');
     areaSelectElement.addEventListener('change', renderPropertyClasses);
     function renderAreas() {
@@ -17,15 +19,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
         }
         renderPropertyClasses();
     }
-    const proertyClassSelectElement = document.querySelector('#filter--propertyClass');
+    const propertyClassSelectElement = document.querySelector('#filter--propertyClass');
     function renderPropertyClasses() {
         const areaPercentages = taxData.percentages[areaSelectElement.value];
-        proertyClassSelectElement.innerHTML = '';
+        propertyClassSelectElement.innerHTML = '';
         for (const propertyClass of Object.keys(areaPercentages)) {
             const optionElement = document.createElement('option');
             optionElement.value = propertyClass;
             optionElement.textContent = propertyClass;
-            proertyClassSelectElement.append(optionElement);
+            propertyClassSelectElement.append(optionElement);
         }
         renderPercentages();
     }
@@ -33,7 +35,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
     assessmentValueElement.addEventListener('change', renderPercentages);
     const resultsContainerElement = document.querySelector('#resultsContainer');
     function renderPercentages() {
-        const taxPercentages = taxData.percentages[areaSelectElement.value][proertyClassSelectElement.value];
+        const taxPercentages = taxData.percentages[areaSelectElement.value][propertyClassSelectElement.value];
         if (assessmentValueElement.value === '') {
             resultsContainerElement.innerHTML = `<div class="message is-warning">
         <p class="message-body has-text-centered">
@@ -45,12 +47,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
         const assessmentValue = assessmentValueElement.valueAsNumber;
         const taxesOwed = Math.round(assessmentValue * taxPercentages.taxRate);
         let taxesRemaining = taxesOwed;
-        resultsContainerElement.innerHTML = `<div class="message is-info">
-      <p class="message-body has-text-centered">
-        Based on an assessment value of <strong>$${assessmentValue}</strong>,<br />
-        the taxes owed for this property rounded to the nearest dollar would be:<br />
-        <span class="is-size-2">$${taxesOwed}</span>
-      </p>
+        resultsContainerElement.innerHTML = `
+      <div class="message is-info">
+        <p class="message-body has-text-centered">
+          Based on an assessment value of <strong>$${assessmentValue}</strong>,<br />
+          the taxes owed for this property rounded to the nearest dollar would be:<br />
+          <span class="is-size-2">$${taxesOwed}</span>
+        </p>
       </div>
       <table class="table is-fullwidth is-striped is-hoverable">
         <thead>
@@ -68,20 +71,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
             <th class="has-text-right">100%</th>
           </tr>
         </tfoot>
-      </table>`;
+      </table>
+    `;
         let rowElement;
         let taxAmount = 0;
         for (const [budgetArea, percentage] of Object.entries(taxPercentages.budgetAreas)) {
             rowElement = document.createElement('tr');
             taxAmount = Math.round(taxesOwed * percentage);
             taxesRemaining -= taxAmount;
-            rowElement.innerHTML = `<td>${budgetArea}</td>
+            rowElement.innerHTML = `
+        <td>${budgetArea}</td>
         <td class="has-text-right">$${taxAmount}</td>
-        <td class="has-text-right">${(percentage * 100).toFixed(2)}%</td>`;
+        <td class="has-text-right">${(percentage * 100).toFixed(2)}%</td>
+      `;
             resultsContainerElement.querySelector('tbody')?.append(rowElement);
         }
         if (taxesRemaining !== 0 && rowElement !== undefined) {
-            rowElement.querySelectorAll('td').item(1).innerHTML = `$${taxAmount + taxesRemaining}`;
+            rowElement.querySelectorAll('td').item(1).innerHTML =
+                `$${taxAmount + taxesRemaining}`;
         }
     }
     document.querySelector('form')?.addEventListener('submit', (event) => {

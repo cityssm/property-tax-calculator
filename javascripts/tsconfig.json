@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "module": "CommonJS",
-    "moduleResolution": "Node",
+    "target": "es2023",
+    "module": "preserve",
+    "moduleResolution": "bundler",
     "isolatedModules": false,
     "declaration": true,
     "noImplicitAny": false,
     "removeComments": true,
-    "allowUnreachableCode": false
+    "allowUnreachableCode": false,
+    "strictNullChecks": true
   },
-  "include": ["javascript/*"],
+  "include": ["./*"],
   "compileOnSave": true,
   "buildOnSave": true
 }

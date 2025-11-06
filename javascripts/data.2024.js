@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 (() => {
     const taxData = {
         taxYear: 2024,
@@ -50,5 +48,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
             }
         }
     };
-    window.exports.taxData = taxData;
+    globalThis.exports.taxData = taxData;
 })();
